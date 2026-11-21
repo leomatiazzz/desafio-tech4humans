@@ -1,10 +1,10 @@
-# Fichas de Ideias de Performance — Testes Futuros
+# Fichas de ideias de performance — testes futuros
 
 Este documento registra abordagens e otimizações arquiteturais pesquisadas na literatura e práticas de mercado que foram catalogadas para evolução futura da aplicação, conforme as diretrizes do desafio.
 
 ---
 
-## Ficha 01: Cache em Memória com Redis para Relatórios Analíticos
+## Ficha 01: Cache em memória com Redis para relatórios analíticos
 
 * **Status:** Pesquisada, teste futuro.
 * **Origem e referência:** 
@@ -25,7 +25,7 @@ Este documento registra abordagens e otimizações arquiteturais pesquisadas na 
 
 ---
 
-## Ficha 02: Paginação Baseada em Cursor (Keyset Pagination) em vez de OFFSET
+## Ficha 02: Paginação baseada em cursor (_keyset pagination_) em vez de OFFSET
 
 * **Status:** Pesquisada, teste futuro.
 * **Origem e referência:**
@@ -44,7 +44,7 @@ Este documento registra abordagens e otimizações arquiteturais pesquisadas na 
 
 ---
 
-## Ficha 03: Visão Materializada Incremental (Materialized View) para Top Produtos
+## Ficha 03: Visão materializada (_materialized view_) para top produtos
 
 * **Status:** Pesquisada, teste futuro.
 * **Origem e referência:**
@@ -65,7 +65,7 @@ Este documento registra abordagens e otimizações arquiteturais pesquisadas na 
 
 ---
 
-## Ficha 04: Réplica de Leitura (Read Replica) Dedicada para Relatórios
+## Ficha 04: Réplica de leitura (_read replica_) dedicada para relatórios
 
 * **Status:** Pesquisada, teste futuro.
 * **Origem e referência:**
