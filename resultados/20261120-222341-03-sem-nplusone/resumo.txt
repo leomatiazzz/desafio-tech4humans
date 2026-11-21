@@ -1,0 +1,17 @@
+Medição: 03-sem-nplusone
+Carga: 20 usuários virtuais por 60s
+
+Requisições:        1143
+Requisições/s:      18.69
+Tempo de resposta:  mediana 178.3 ms | p95 6523.5 ms | p99 12332.7 ms
+Erros:              0.00%
+
+Por rota:
+rota                  req       mediana       p95           p99           erros   
+cliente               294       92.1 ms       571.9 ms      1189.1 ms     0.0%    
+cliente-por-email     175       102.2 ms      592.8 ms      972.6 ms      0.0%    
+pedidos-do-cliente    241       203.7 ms      1091.4 ms     1564.0 ms     0.0%    
+pedidos-por-status    161       1228.4 ms     12536.5 ms    17624.6 ms    0.0%    
+busca-produtos        174       126.4 ms      816.4 ms      1464.5 ms     0.0%    
+vendas-por-dia        80        3136.4 ms     8762.8 ms     10957.2 ms    0.0%    
+top-produtos          18        8448.3 ms     14718.3 ms    15589.3 ms    0.0%    
