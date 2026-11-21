@@ -1,6 +1,7 @@
 # Registro de experimentos de performance
 
-| # | Mudança | Hipótese | Req/s (antes → depois) | p95 (antes → depois) | CPU Banco | Pasta resultados | Conclusão |
+| # | Mudança | Hipótese | Req/s (antes → depois) | p95 (antes → depois) | CPU Banco | Pasta Resultados | Conclusão |
 |---|---|---|---|---|---|---|---|
 | 00 | Linha de base | Estado original da aplicação | 2.86 req/s | 21.403 ms | 98.6% | `resultados/*-00-linha-de-base` | Banco no gargalo de CPU (98%), vazão baixa e latência crítica em relatórios e pedidos. |
 | 01 | Pool de conexões (`pg.Pool`) | Reutilizar conexões elimina overhead de TCP e handshake a cada query | 2.86 → 3.59 req/s (+25.5%) | 21.403 → 17.399 ms (-18.7%) | 97.4% | `resultados/*-01-pool-conexoes` | **Ganho comprovado:** +25% de vazão e rotas simples ficaram ~68% mais rápidas. O gargalo agora são as buscas sem índice no banco. |
+| 02 | Índices nas FKs e Filtros | Criação de índices B-Tree nas chaves estrangeiras (`pedidos.cliente_id`, `itens_pedido.pedido_id`), filtros de status e GIN Trigram em produtos, eliminando Sequential Scans | 3.59 → 17.70 req/s (+393%) | 17.399 → 5.721 ms (-67.1%) | 94.8% | `resultados/*-02-indices-banco` | **Salto massivo de performance:** vazão multiplicou por 6x (+518% vs base). A rota de pedidos do cliente caiu de 23s para 1.8s (-92%). Gargalo residual: consultas N+1 e agregação pesada em relatórios. |
