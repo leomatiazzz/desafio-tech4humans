@@ -3,6 +3,18 @@ name: desafio-performance
 services:
   banco:
     image: postgres:16.4
+    command:
+      - "postgres"
+      - "-c"
+      - "shared_buffers=128MB"
+      - "-c"
+      - "work_mem=16MB"
+      - "-c"
+      - "effective_cache_size=384MB"
+      - "-c"
+      - "random_page_cost=1.1"
+      - "-c"
+      - "max_parallel_workers_per_gather=0"
     shm_size: 256mb
     environment:
       POSTGRES_USER: loja
@@ -17,7 +29,7 @@ services:
       - dados-banco:/var/lib/postgresql/data
       - ./banco:/docker-entrypoint-initdb.d:ro
     healthcheck:
-      test: ["CMD", "pg_isready", "-h", "127.0.0.1", "-U", "loja", "-d", "loja"]
+      test: [ "CMD", "pg_isready", "-h", "127.0.0.1", "-U", "loja", "-d", "loja" ]
       interval: 5s
       timeout: 3s
       retries: 120
@@ -50,7 +62,7 @@ services:
   # Ferramentas: só rodam quando chamadas (scripts/medir.sh e scripts/verificar-contrato.sh).
   carga:
     image: grafana/k6:0.54.0
-    profiles: ["ferramentas"]
+    profiles: [ "ferramentas" ]
     environment:
       URL_BASE: http://api:3000
     volumes:
@@ -59,13 +71,13 @@ services:
 
   contrato:
     image: node:20.18.0-alpine
-    profiles: ["ferramentas"]
+    profiles: [ "ferramentas" ]
     working_dir: /contrato
     environment:
       URL_BASE: http://api:3000
     volumes:
       - ./contrato:/contrato
-    entrypoint: ["node", "verificar.js"]
+    entrypoint: [ "node", "verificar.js" ]
 
 volumes:
   dados-banco:
