@@ -1,0 +1,17 @@
+Medição: 05-tuning-postgres
+Carga: 20 usuários virtuais por 60s
+
+Requisições:        1624
+Requisições/s:      22.93
+Tempo de resposta:  mediana 98.4 ms | p95 1504.0 ms | p99 24452.9 ms
+Erros:              0.00%
+
+Por rota:
+rota                  req       mediana       p95           p99           erros   
+cliente               416       86.3 ms       194.1 ms      301.1 ms      0.0%    
+cliente-por-email     236       93.5 ms       197.1 ms      303.6 ms      0.0%    
+pedidos-do-cliente    337       96.0 ms       295.0 ms      454.4 ms      0.0%    
+pedidos-por-status    238       613.0 ms      2914.8 ms     15408.4 ms    0.0%    
+busca-produtos        248       80.1 ms       198.0 ms      502.3 ms      0.0%    
+vendas-por-dia        120       1047.6 ms     5260.0 ms     12138.5 ms    0.0%    
+top-produtos          29        25209.6 ms    28697.4 ms    29500.9 ms    0.0%    
